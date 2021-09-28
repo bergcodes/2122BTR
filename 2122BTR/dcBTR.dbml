@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbBTR" Class="dcBTRDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local)\SQLEXPRESS;Initial Catalog=dbBTR;Integrated Security=True" SettingsObjectName="_2122BTR.Properties.Settings" SettingsPropertyName="dbBTRConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.customers" Member="customers">
+    <Type Name="customer">
+      <Column Name="customerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="city" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phonenumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="customer_order" Member="orders" ThisKey="customerID" OtherKey="custumerID" Type="order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.producttypes" Member="producttypes">
+    <Type Name="producttype">
+      <Column Name="producttypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="producttypeomschrijving" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="producttype_producten" Member="productens" ThisKey="producttypeID" OtherKey="producttypeid" Type="producten" />
+    </Type>
+  </Table>
+  <Table Name="dbo.itemperorder" Member="itemperorders">
+    <Type Name="itemperorder">
+      <Column Name="IiemperOrderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="orderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="productID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="order_itemperorder" Member="order" ThisKey="orderID" OtherKey="orderID" Type="order" IsForeignKey="true" />
+      <Association Name="producten_itemperorder" Member="producten" ThisKey="productID" OtherKey="productID" Type="producten" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.orders" Member="orders">
+    <Type Name="order">
+      <Column Name="orderID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="custumerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="order_itemperorder" Member="itemperorders" ThisKey="orderID" OtherKey="orderID" Type="itemperorder" />
+      <Association Name="customer_order" Member="customer" ThisKey="custumerID" OtherKey="customerID" Type="customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.producten" Member="productens">
+    <Type Name="producten">
+      <Column Name="productID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="productName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="producttypeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="prijs" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="producten_itemperorder" Member="itemperorders" ThisKey="productID" OtherKey="productID" Type="itemperorder" />
+      <Association Name="producttype_producten" Member="producttype" ThisKey="producttypeid" OtherKey="producttypeID" Type="producttype" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
