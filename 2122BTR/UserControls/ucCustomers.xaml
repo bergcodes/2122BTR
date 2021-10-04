@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="809" d:DesignWidth="1592" Background="White">
     <Grid>
-        <DataGrid x:Name="dgCustomers" HorizontalAlignment="Left" Height="789" Margin="10,10,0,0" VerticalAlignment="Top" Width="1000" CanUserAddRows="False" AutoGenerateColumns="False">
+        <DataGrid x:Name="dgCustomers" HorizontalAlignment="Left" Height="789" Margin="10,10,0,0" VerticalAlignment="Top" Width="1000" CanUserAddRows="False" AutoGenerateColumns="False" MouseDoubleClick="dgCustomers_MouseDoubleClick" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Voornaam" Binding="{Binding firstname}"/>
                 <DataGridTextColumn Header="Achternaam" Binding="{Binding lastname}"/>
@@ -16,6 +16,33 @@
                 <DataGridTextColumn Header="E-mail" Binding="{Binding email}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="400" Margin="1282,10,0,0" VerticalAlignment="Top" Width="300">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="163*"/>
+                    <RowDefinition Height="36*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Achternaam" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Height="23"/>
+                <TextBox x:Name="txtLastname" HorizontalAlignment="Left" Height="23" Margin="115,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
+                <Label Content="Woonplaats" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Height="23"/>
+                <TextBox x:Name="txtCity" HorizontalAlignment="Left" Height="23" Margin="115,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
+                <Label Content="Telefoonnummer" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Height="23"/>
+                <TextBox x:Name="txtPhonenumber" HorizontalAlignment="Left" Height="23" Margin="115,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
+                <Label Content="Email" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Height="23"/>
+                <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="23" Margin="115,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
+                <Label Content="Voornaam" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Height="23"/>
+                <TextBox x:Name="txtFirstname" HorizontalAlignment="Left" Height="23" Margin="115,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
+                <Button x:Name="btnSave" Content="Opslaan" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="278" Height="50" Click="btnSave_Click"/>
+                <Label Content="Geselecteerde klant:" HorizontalAlignment="Left" Margin="10,208,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblSelCustId" Content="Nieuwe klant" HorizontalAlignment="Left" Margin="131,208,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblSelCustName" Content="" HorizontalAlignment="Left" Margin="131,239,0,0" VerticalAlignment="Top" Width="157"/>
+                <Button x:Name="btnNewCust" Content="Nieuw" HorizontalAlignment="Left" Margin="215,208,0,0" VerticalAlignment="Top" Width="73" Height="26" Click="btnNewCust_Click"/>
+                <Button x:Name="btnDeleteCust" Content="Verwijderen" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top" Width="278" Grid.Row="1" Height="30" Background="Red" Click="btnDeleteCust_Click" Visibility="Hidden"/>
+
+            </Grid>
+        </Border>
+        <Label Content="Totaal aantal klanten: " HorizontalAlignment="Left" Margin="1015,773,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCustCount" Content="" HorizontalAlignment="Left" Margin="1140,773,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>
