@@ -57,8 +57,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\CustomerController.cs" />
+    <Compile Include="Classes\ProductController.cs" />
+    <Compile Include="Classes\ProducttypeController.cs" />
     <Compile Include="UserControls\ucCustomers.xaml.cs">
       <DependentUpon>ucCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucProducts.xaml.cs">
+      <DependentUpon>ucProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\wEditProduct.xaml.cs">
+      <DependentUpon>wEditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\wManageProductType.xaml.cs">
+      <DependentUpon>wManageProductType.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +89,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\ucCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ucProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\wEditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\wManageProductType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,8 +142,6 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

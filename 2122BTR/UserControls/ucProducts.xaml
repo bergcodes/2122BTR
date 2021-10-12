@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="_2122BTR.UserControls.ucProducts"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_2122BTR.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="809" d:DesignWidth="1592" Background="White">
+    <Grid>
+        <DataGrid x:Name="dgProducts" HorizontalAlignment="Left" Height="789" Margin="10,10,0,0" VerticalAlignment="Top" Width="650" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="dgProducts_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naam" Binding="{Binding productName}"/>
+                <DataGridTextColumn Header="Prijs" Binding="{Binding prijs}"/>
+                <DataGridTextColumn Header="Producttype" Binding="{Binding producttype.producttypeomschrijving}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Naam" HorizontalAlignment="Left" Margin="665,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prijs" HorizontalAlignment="Left" Margin="665,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Producttype" HorizontalAlignment="Left" Margin="665,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="22" Margin="758,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtPrice" HorizontalAlignment="Left" Height="23" Margin="758,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbProducttype" HorizontalAlignment="Left" Margin="758,76,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="producttypeomschrijving"/>
+        <Button x:Name="btnSave" Content="Opslaan" HorizontalAlignment="Left" Margin="665,103,0,0" VerticalAlignment="Top" Width="213" Height="50" Click="btnSave_Click"/>
+        <Button x:Name="btnManagePT" Content="Beheren" HorizontalAlignment="Left" Margin="883,76,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btnManagePT_Click"/>
+
+    </Grid>
+</UserControl>
