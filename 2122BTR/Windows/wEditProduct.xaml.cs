@@ -22,8 +22,8 @@ namespace _2122BTR.Windows
         dcBTRDataContext db;
         Classes.ProductController myPC;
         Classes.ProducttypeController myPTC;
-        producten myProduct;
-        public wEditProduct(dcBTRDataContext db, producten myProduct)
+        product myProduct;
+        public wEditProduct(dcBTRDataContext db, product myProduct)
         {
             this.db = db;
             this.myPC = new Classes.ProductController(db);
@@ -37,7 +37,7 @@ namespace _2122BTR.Windows
         {
             cmbProducttype.ItemsSource = myPTC.getAllProducttypes();
             txtName.Text = myProduct.productName;
-            txtPrice.Text = myProduct.prijs.ToString();
+            txtPrice.Text = myProduct.price.ToString();
             cmbProducttype.SelectedItem = myProduct.producttype;
         }
 

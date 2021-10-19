@@ -124,5 +124,10 @@ namespace _2122BTR.UserControls
                 }
             }
         }
+
+        private void dgCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

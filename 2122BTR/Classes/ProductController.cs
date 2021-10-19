@@ -14,20 +14,20 @@ namespace _2122BTR.Classes
             this.db = db;
         }
 
-        public List<producten> getAllProducts()
+        public List<product> getAllProducts()
         {
-            return db.productens.ToList();
+            return db.products.ToList();
         }
 
         public bool createProduct(string sName, decimal dPrice, producttype myPT)
         {
             try
             {
-                producten myProduct = new producten();
+                product myProduct = new product();
                 myProduct.productName = sName;
-                myProduct.prijs = dPrice;
+                myProduct.price = dPrice;
                 myProduct.producttypeid = myPT.producttypeID;
-                db.productens.InsertOnSubmit(myProduct);
+                db.products.InsertOnSubmit(myProduct);
                 db.SubmitChanges();
                 return true;
             }
@@ -37,12 +37,12 @@ namespace _2122BTR.Classes
             }
         }
 
-        public bool editProduct(producten myProduct, string sName, decimal dPrice, producttype myPT)
+        public bool editProduct(product myProduct, string sName, decimal dPrice, producttype myPT)
         {
             try
             {
                 myProduct.productName = sName;
-                myProduct.prijs = dPrice;
+                myProduct.price = dPrice;
                 myProduct.producttypeid = myPT.producttypeID;
                 db.SubmitChanges();
                 return true;
@@ -53,11 +53,11 @@ namespace _2122BTR.Classes
             }
         }
 
-        public bool deleteProduct(producten myProduct)
+        public bool deleteProduct(product myProduct)
         {
             try
             {
-                db.productens.DeleteOnSubmit(myProduct);
+                db.products.DeleteOnSubmit(myProduct);
                 db.SubmitChanges();
                 return true;
             }

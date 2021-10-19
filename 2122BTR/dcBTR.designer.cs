@@ -42,9 +42,9 @@ namespace _2122BTR
     partial void Insertorder(order instance);
     partial void Updateorder(order instance);
     partial void Deleteorder(order instance);
-    partial void Insertproducten(producten instance);
-    partial void Updateproducten(producten instance);
-    partial void Deleteproducten(producten instance);
+    partial void Insertproduct(product instance);
+    partial void Updateproduct(product instance);
+    partial void Deleteproduct(product instance);
     #endregion
 		
 		public dcBTRDataContext() : 
@@ -109,11 +109,11 @@ namespace _2122BTR
 			}
 		}
 		
-		public System.Data.Linq.Table<producten> productens
+		public System.Data.Linq.Table<product> products
 		{
 			get
 			{
-				return this.GetTable<producten>();
+				return this.GetTable<product>();
 			}
 		}
 	}
@@ -282,7 +282,7 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="customer_order", Storage="_orders", ThisKey="customerID", OtherKey="custumerID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="customer_order", Storage="_orders", ThisKey="customerID", OtherKey="customerID")]
 		public EntitySet<order> orders
 		{
 			get
@@ -338,7 +338,7 @@ namespace _2122BTR
 		
 		private string _producttypeomschrijving;
 		
-		private EntitySet<producten> _productens;
+		private EntitySet<product> _products;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -352,7 +352,7 @@ namespace _2122BTR
 		
 		public producttype()
 		{
-			this._productens = new EntitySet<producten>(new Action<producten>(this.attach_productens), new Action<producten>(this.detach_productens));
+			this._products = new EntitySet<product>(new Action<product>(this.attach_products), new Action<product>(this.detach_products));
 			OnCreated();
 		}
 		
@@ -396,16 +396,16 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="producttype_producten", Storage="_productens", ThisKey="producttypeID", OtherKey="producttypeid")]
-		public EntitySet<producten> productens
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="producttype_product", Storage="_products", ThisKey="producttypeID", OtherKey="producttypeid")]
+		public EntitySet<product> products
 		{
 			get
 			{
-				return this._productens;
+				return this._products;
 			}
 			set
 			{
-				this._productens.Assign(value);
+				this._products.Assign(value);
 			}
 		}
 		
@@ -429,26 +429,26 @@ namespace _2122BTR
 			}
 		}
 		
-		private void attach_productens(producten entity)
+		private void attach_products(product entity)
 		{
 			this.SendPropertyChanging();
 			entity.producttype = this;
 		}
 		
-		private void detach_productens(producten entity)
+		private void detach_products(product entity)
 		{
 			this.SendPropertyChanging();
 			entity.producttype = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.itemperorder")]
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.itemperorders")]
 	public partial class itemperorder : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _IiemperOrderID;
+		private int _itemperorderID;
 		
 		private int _amount;
 		
@@ -456,16 +456,16 @@ namespace _2122BTR
 		
 		private int _productID;
 		
-		private EntityRef<order> _order;
+		private EntityRef<product> _product;
 		
-		private EntityRef<producten> _producten;
+		private EntityRef<order> _order;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIiemperOrderIDChanging(int value);
-    partial void OnIiemperOrderIDChanged();
+    partial void OnitemperorderIDChanging(int value);
+    partial void OnitemperorderIDChanged();
     partial void OnamountChanging(int value);
     partial void OnamountChanged();
     partial void OnorderIDChanging(int value);
@@ -476,27 +476,27 @@ namespace _2122BTR
 		
 		public itemperorder()
 		{
+			this._product = default(EntityRef<product>);
 			this._order = default(EntityRef<order>);
-			this._producten = default(EntityRef<producten>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IiemperOrderID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IiemperOrderID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_itemperorderID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int itemperorderID
 		{
 			get
 			{
-				return this._IiemperOrderID;
+				return this._itemperorderID;
 			}
 			set
 			{
-				if ((this._IiemperOrderID != value))
+				if ((this._itemperorderID != value))
 				{
-					this.OnIiemperOrderIDChanging(value);
+					this.OnitemperorderIDChanging(value);
 					this.SendPropertyChanging();
-					this._IiemperOrderID = value;
-					this.SendPropertyChanged("IiemperOrderID");
-					this.OnIiemperOrderIDChanged();
+					this._itemperorderID = value;
+					this.SendPropertyChanged("itemperorderID");
+					this.OnitemperorderIDChanged();
 				}
 			}
 		}
@@ -556,7 +556,7 @@ namespace _2122BTR
 			{
 				if ((this._productID != value))
 				{
-					if (this._producten.HasLoadedOrAssignedValue)
+					if (this._product.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -565,6 +565,40 @@ namespace _2122BTR
 					this._productID = value;
 					this.SendPropertyChanged("productID");
 					this.OnproductIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_itemperorder", Storage="_product", ThisKey="productID", OtherKey="productID", IsForeignKey=true)]
+		public product product
+		{
+			get
+			{
+				return this._product.Entity;
+			}
+			set
+			{
+				product previousValue = this._product.Entity;
+				if (((previousValue != value) 
+							|| (this._product.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._product.Entity = null;
+						previousValue.itemperorders.Remove(this);
+					}
+					this._product.Entity = value;
+					if ((value != null))
+					{
+						value.itemperorders.Add(this);
+						this._productID = value.productID;
+					}
+					else
+					{
+						this._productID = default(int);
+					}
+					this.SendPropertyChanged("product");
 				}
 			}
 		}
@@ -603,40 +637,6 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="producten_itemperorder", Storage="_producten", ThisKey="productID", OtherKey="productID", IsForeignKey=true)]
-		public producten producten
-		{
-			get
-			{
-				return this._producten.Entity;
-			}
-			set
-			{
-				producten previousValue = this._producten.Entity;
-				if (((previousValue != value) 
-							|| (this._producten.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._producten.Entity = null;
-						previousValue.itemperorders.Remove(this);
-					}
-					this._producten.Entity = value;
-					if ((value != null))
-					{
-						value.itemperorders.Add(this);
-						this._productID = value.productID;
-					}
-					else
-					{
-						this._productID = default(int);
-					}
-					this.SendPropertyChanged("producten");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -668,7 +668,7 @@ namespace _2122BTR
 		
 		private System.DateTime _date;
 		
-		private int _custumerID;
+		private int _customerID;
 		
 		private EntitySet<itemperorder> _itemperorders;
 		
@@ -682,8 +682,8 @@ namespace _2122BTR
     partial void OnorderIDChanged();
     partial void OndateChanging(System.DateTime value);
     partial void OndateChanged();
-    partial void OncustumerIDChanging(int value);
-    partial void OncustumerIDChanged();
+    partial void OncustomerIDChanging(int value);
+    partial void OncustomerIDChanged();
     #endregion
 		
 		public order()
@@ -733,26 +733,26 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_custumerID", DbType="Int NOT NULL")]
-		public int custumerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_customerID", DbType="Int NOT NULL")]
+		public int customerID
 		{
 			get
 			{
-				return this._custumerID;
+				return this._customerID;
 			}
 			set
 			{
-				if ((this._custumerID != value))
+				if ((this._customerID != value))
 				{
 					if (this._customer.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OncustumerIDChanging(value);
+					this.OncustomerIDChanging(value);
 					this.SendPropertyChanging();
-					this._custumerID = value;
-					this.SendPropertyChanged("custumerID");
-					this.OncustumerIDChanged();
+					this._customerID = value;
+					this.SendPropertyChanged("customerID");
+					this.OncustomerIDChanged();
 				}
 			}
 		}
@@ -770,7 +770,7 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="customer_order", Storage="_customer", ThisKey="custumerID", OtherKey="customerID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="customer_order", Storage="_customer", ThisKey="customerID", OtherKey="customerID", IsForeignKey=true)]
 		public customer customer
 		{
 			get
@@ -793,11 +793,11 @@ namespace _2122BTR
 					if ((value != null))
 					{
 						value.orders.Add(this);
-						this._custumerID = value.customerID;
+						this._customerID = value.customerID;
 					}
 					else
 					{
-						this._custumerID = default(int);
+						this._customerID = default(int);
 					}
 					this.SendPropertyChanged("customer");
 				}
@@ -837,8 +837,8 @@ namespace _2122BTR
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.producten")]
-	public partial class producten : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.products")]
+	public partial class product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -849,7 +849,7 @@ namespace _2122BTR
 		
 		private int _producttypeid;
 		
-		private decimal _prijs;
+		private decimal _price;
 		
 		private EntitySet<itemperorder> _itemperorders;
 		
@@ -865,11 +865,11 @@ namespace _2122BTR
     partial void OnproductNameChanged();
     partial void OnproducttypeidChanging(int value);
     partial void OnproducttypeidChanged();
-    partial void OnprijsChanging(decimal value);
-    partial void OnprijsChanged();
+    partial void OnpriceChanging(decimal value);
+    partial void OnpriceChanged();
     #endregion
 		
-		public producten()
+		public product()
 		{
 			this._itemperorders = new EntitySet<itemperorder>(new Action<itemperorder>(this.attach_itemperorders), new Action<itemperorder>(this.detach_itemperorders));
 			this._producttype = default(EntityRef<producttype>);
@@ -940,27 +940,27 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prijs", DbType="Money NOT NULL")]
-		public decimal prijs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Money NOT NULL")]
+		public decimal price
 		{
 			get
 			{
-				return this._prijs;
+				return this._price;
 			}
 			set
 			{
-				if ((this._prijs != value))
+				if ((this._price != value))
 				{
-					this.OnprijsChanging(value);
+					this.OnpriceChanging(value);
 					this.SendPropertyChanging();
-					this._prijs = value;
-					this.SendPropertyChanged("prijs");
-					this.OnprijsChanged();
+					this._price = value;
+					this.SendPropertyChanged("price");
+					this.OnpriceChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="producten_itemperorder", Storage="_itemperorders", ThisKey="productID", OtherKey="productID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="product_itemperorder", Storage="_itemperorders", ThisKey="productID", OtherKey="productID")]
 		public EntitySet<itemperorder> itemperorders
 		{
 			get
@@ -973,7 +973,7 @@ namespace _2122BTR
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="producttype_producten", Storage="_producttype", ThisKey="producttypeid", OtherKey="producttypeID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="producttype_product", Storage="_producttype", ThisKey="producttypeid", OtherKey="producttypeID", IsForeignKey=true)]
 		public producttype producttype
 		{
 			get
@@ -990,12 +990,12 @@ namespace _2122BTR
 					if ((previousValue != null))
 					{
 						this._producttype.Entity = null;
-						previousValue.productens.Remove(this);
+						previousValue.products.Remove(this);
 					}
 					this._producttype.Entity = value;
 					if ((value != null))
 					{
-						value.productens.Add(this);
+						value.products.Add(this);
 						this._producttypeid = value.producttypeID;
 					}
 					else
@@ -1030,13 +1030,13 @@ namespace _2122BTR
 		private void attach_itemperorders(itemperorder entity)
 		{
 			this.SendPropertyChanging();
-			entity.producten = this;
+			entity.product = this;
 		}
 		
 		private void detach_itemperorders(itemperorder entity)
 		{
 			this.SendPropertyChanging();
-			entity.producten = null;
+			entity.product = null;
 		}
 	}
 }

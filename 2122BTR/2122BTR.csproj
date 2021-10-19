@@ -57,10 +57,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\CustomerController.cs" />
+    <Compile Include="Classes\ItemPerOrderController.cs" />
+    <Compile Include="Classes\OrderController.cs" />
     <Compile Include="Classes\ProductController.cs" />
     <Compile Include="Classes\ProducttypeController.cs" />
     <Compile Include="UserControls\ucCustomers.xaml.cs">
       <DependentUpon>ucCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucOrders.xaml.cs">
+      <DependentUpon>ucOrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucProducts.xaml.cs">
       <DependentUpon>ucProducts.xaml</DependentUpon>
@@ -89,6 +94,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\ucCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ucOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

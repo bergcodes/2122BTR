@@ -63,7 +63,7 @@ namespace _2122BTR.UserControls
         {
             if(dgProducts.SelectedItem != null)
             {
-                producten selProduct = (producten)dgProducts.SelectedItem;
+                product selProduct = (product)dgProducts.SelectedItem;
                 Windows.wEditProduct myWindow = new Windows.wEditProduct(db, selProduct);
                 myWindow.Closing += MyWindow_Closing;
                 myWindow.Show();

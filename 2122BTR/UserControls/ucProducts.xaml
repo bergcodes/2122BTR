@@ -10,7 +10,7 @@
         <DataGrid x:Name="dgProducts" HorizontalAlignment="Left" Height="789" Margin="10,10,0,0" VerticalAlignment="Top" Width="650" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False" MouseDoubleClick="dgProducts_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Naam" Binding="{Binding productName}"/>
-                <DataGridTextColumn Header="Prijs" Binding="{Binding prijs}"/>
+                <DataGridTextColumn Header="Prijs" Binding="{Binding price}"/>
                 <DataGridTextColumn Header="Producttype" Binding="{Binding producttype.producttypeomschrijving}"/>
             </DataGrid.Columns>
         </DataGrid>

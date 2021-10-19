@@ -35,5 +35,10 @@ namespace _2122BTR
         {
             frMain.Content = new UserControls.ucProducts(db);
         }
+
+        private void btnOrders_Click(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = new UserControls.ucOrders(db);
+        }
     }
 }
