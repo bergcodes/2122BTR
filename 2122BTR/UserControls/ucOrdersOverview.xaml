@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="_2122BTR.UserControls.ucOrdersOverview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_2122BTR.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="809" d:DesignWidth="1592" Background="White">
+    <Grid>
+        <DataGrid x:Name="dgOrders" HorizontalAlignment="Left" Height="350" Margin="10,10,0,0" VerticalAlignment="Top" Width="1572" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgOrders_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding date}" Header="Datum"/>
+                <DataGridTextColumn Binding="{Binding customer.firstname}" Header="Voornaam"/>
+                <DataGridTextColumn Binding="{Binding customer.lastname}" Header="Achternaam"/>
+                <DataGridTextColumn Binding="{Binding customer.city}" Header="Woonplaats"/>
+                <DataGridTextColumn Binding="{Binding customer.phonenumber}" Header="Telefoonnummer"/>
+                <DataGridTextColumn Binding="{Binding customer.email}" Header="E-mail"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEditOrder" Content="Wijzigen" Click="btnEditOrder_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dgIPO" HorizontalAlignment="Left" Height="434" Margin="10,365,0,0" VerticalAlignment="Top" Width="1572" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding product.producttype.producttypeomschrijving}" Header="Producttype"/>
+                <DataGridTextColumn Binding="{Binding product.productName}" Header="Product"/>
+                <DataGridTextColumn Binding="{Binding amount}" Header="Aantal"/>
+                <DataGridTextColumn Binding="{Binding product.price}" Header="Prijs per product"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

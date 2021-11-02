@@ -48,5 +48,19 @@ namespace _2122BTR.Classes
                 return false;
             }
         }
+
+        public bool deleteItemPerOrder(itemperorder myIPO)
+        {
+            try
+            {
+                db.itemperorders.DeleteOnSubmit(myIPO);
+                db.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

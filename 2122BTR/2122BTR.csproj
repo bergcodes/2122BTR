@@ -67,8 +67,14 @@
     <Compile Include="UserControls\ucOrders.xaml.cs">
       <DependentUpon>ucOrders.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucOrdersOverview.xaml.cs">
+      <DependentUpon>ucOrdersOverview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucProducts.xaml.cs">
       <DependentUpon>ucProducts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\wEditOrder.xaml.cs">
+      <DependentUpon>wEditOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\wEditProduct.xaml.cs">
       <DependentUpon>wEditProduct.xaml</DependentUpon>
@@ -101,7 +107,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ucOrdersOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ucProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\wEditOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

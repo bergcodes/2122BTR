@@ -10,8 +10,9 @@
         <Button x:Name="btnCustomers" Content="Klanten" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnCustomers_Click"/>
         <Button x:Name="btnProducts" Content="Producten" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnProducts_Click"/>
         <Button x:Name="btnOrders" Content="Bestellingen" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnOrders_Click"/>
-        <Button Content="Factuur" HorizontalAlignment="Left" Margin="325,10,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
+        <Button Content="Factuur" HorizontalAlignment="Left" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
         <Frame x:Name="frMain" Content="" HorizontalAlignment="Left" Height="809" Margin="0,60,0,0" VerticalAlignment="Top" Width="1592" NavigationUIVisibility="Hidden"/>
+        <Button x:Name="btnOrdersOverview" Content="Bestellingen bekijken" HorizontalAlignment="Left" Margin="325,10,0,0" VerticalAlignment="Top" Width="100" Height="50" Click="btnOrdersOverview_Click"/>
 
     </Grid>
 </Window>

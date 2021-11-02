@@ -1,0 +1,39 @@
+﻿<Window x:Class="_2122BTR.Windows.wEditOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_2122BTR.Windows"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Bestelling wijzigen" Height="450" Width="800">
+    <Grid>
+        <Label Content="Klant" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbCustomer" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Width="300" Height="26" DisplayMemberPath="lastname" SelectionChanged="cmbCustomer_SelectionChanged"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="482,10,0,0" VerticalAlignment="Top" Width="300">
+            <Grid>
+                <Label x:Name="lblLastname" Content="Achternaam" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblFirstname" Content="Voornaam" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblCity" Content="Woonplaats" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblPhonenumber" Content="Telefoonnummer" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
+            </Grid>
+        </Border>
+        <DataGrid x:Name="dgIPOs" HorizontalAlignment="Left" Height="244" Margin="10,165,0,0" VerticalAlignment="Top" Width="772" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding product.producttype.producttypeomschrijving}" Header="Producttype"/>
+                <DataGridTextColumn Binding="{Binding product.productName}" Header="Product"/>
+                <DataGridTextColumn Binding="{Binding amount}" Header="Aantal"/>
+                <DataGridTextColumn Binding="{Binding product.price}" Header="Prijs per product"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnIPODelete" Content="Verwijderen" Click="btnIPODelete_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnEditCustomer" Content="Klant wijzigen" HorizontalAlignment="Left" Margin="52,41,0,0" VerticalAlignment="Top" Width="300" Click="btnEditCustomer_Click"/>
+        <Button x:Name="btnDeleteOrder" Content="Bestelling verwijderen" HorizontalAlignment="Left" Margin="52,140,0,0" VerticalAlignment="Top" Width="300" Click="btnDeleteOrder_Click"/>
+    </Grid>
+</Window>
